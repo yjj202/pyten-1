@@ -16,7 +16,12 @@ def tendiag(v, sz):
     x = np.zeros(sz)
     subs = np.matlib.repmat(np.array(range(n)).reshape(n, 1), 1, len(sz))
 
-    for i in range(n):
-        x[subs[i][0], subs[i][1], subs[i][2]] = v[i]
+    if(n>1):
+      for i in range(n):
+          x[subs[i][0], subs[i][1], subs[i][2]] = v[i]
+    else:
+      for i in range(n):
+          x[subs[i][0], subs[i][1]] = v[i]
+
 
     return pyten.tenclass.Tensor(x)
